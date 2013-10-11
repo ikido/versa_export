@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'versacommerce_app', git: 'git://github.com/ikido/versacommerce_app.git'
 gem 'sucker_punch', '~> 1.0'
+gem 'haml'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

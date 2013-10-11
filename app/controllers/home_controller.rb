@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class HomeController < ApplicationController
-  before_filter :ensure_api_session
+  around_filter :ensure_current_api_session
 
   def index
     # get 10 products
