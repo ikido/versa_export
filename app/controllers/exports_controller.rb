@@ -21,14 +21,14 @@ class ExportsController < ApplicationController
     FileUtils.rm(xml_file_path) if File.exists?(xml_file_path)
 
     # when trying to do that async we get 'Missing site URI' error, need to look into later
-    ProductsExport.new.perform(self, VersacommerceAPI::Base.site)
-    @xml_file = xml_file_path
+    ProductsExport.new.perform(VersacommerceAPI::Base.site, xml_file_path)
+    render :products, format: :html
   end
 
   def xml_file_path
     unless @xml_file_path
-      xml_exports_dir = Rails.root.join('public', 'exports')
-      Dir.mkdir(xml_exports_dir) unless File.exists?(xml_exports_dir)
+      xml_exports_dir = Rails.root.join('public', 'files', 'exports')
+      FileUtils.mkdir_p(xml_exports_dir) unless File.exists?(xml_exports_dir)
       @xml_file_path = xml_exports_dir.join "#{params[:action]}.xml"
     end
 

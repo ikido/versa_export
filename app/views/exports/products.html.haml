@@ -1,8 +1,4 @@
 %h1 Export products
 .export_file_loading{ data: { url: @xml_file } }
-  = image_tag 'loading.gif'
-  XML file is being generated
-
-.export_file_loaded{ style: 'display: none' }
-  Export completed.
-  = link_to 'Download your xml', @xml_file.to_s
+  XML file generated:
+  = link_to 'download now', url_for_public_file(@xml_file_path)
